@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b1b" />
+  <meta name="description" content="SOKOL GAMES — портал авторских мини-игр." />
+  <title>SOKOL GAMES — Play beyond limits</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="topbar shell">
+    <a class="brand" href="#home" aria-label="SOKOL GAMES — главная"><span class="brand-mark">S</span><span>SOKOL <b>GAMES</b><small>PLAY BEYOND LIMITS</small></span></a>
+    <nav aria-label="Главное меню"><a href="#games">Игры</a><a href="#about">О проекте</a></nav>
+    <button class="tiny-btn" id="themeSound" aria-pressed="false" title="Включить звуки интерфейса">♫ <span>Звуки: выкл.</span></button>
+  </header>
+  <main id="home">
+    <section class="hero shell">
+      <div class="eyebrow"><span class="pulse"></span> INDEPENDENT GAME UNIVERSE <span class="line"></span> EST. 2026</div>
+      <h1>ТВОЯ ИГРА.<br /><span>ТВОИ ПРАВИЛА.</span></h1>
+      <p>Добро пожаловать в SOKOL GAMES — вселенную мини-игр, где каждый новый уровень начинается с одной идеи.</p>
+      <div class="hero-actions"><a href="#games" class="btn primary">Выбрать игру <span>↗</span></a><a href="#about" class="btn ghost">О проекте <span>→</span></a></div>
+      <div class="stats"><div><strong id="totalCount">0</strong><span>ИГР В КАТАЛОГЕ</span></div><div><strong id="readyCount">0</strong><span>ДОСТУПНО СЕЙЧАС</span></div><div><strong>∞</strong><span>ВОЗМОЖНОСТЕЙ</span></div></div>
+      <div class="orbital" aria-hidden="true"><div class="ring ring-1"></div><div class="ring ring-2"></div><div class="planet">S</div><div class="planet-small p1"></div><div class="planet-small p2"></div></div>
+    </section>
+    <section class="library shell" id="games">
+      <div class="section-title"><div><div class="eyebrow">THE ARCADE COLLECTION</div><h2>БИБЛИОТЕКА <span>ИГР</span></h2></div><span class="catalog-number" id="catalogCounter">00 / GAMES</span></div>
+      <div class="toolbar"><label class="search-wrap"><span>⌕</span><input type="search" id="search" placeholder="Найти игру..." autocomplete="off" aria-label="Поиск по играм" /></label><div class="filters" id="filters"><button class="chip selected" data-filter="all">Все игры</button><button class="chip" data-filter="ready">Играть сейчас</button><button class="chip" data-filter="soon">Скоро</button><button class="chip" data-filter="favorite">★ Избранное</button></div></div>
+      <div id="gameGrid" class="game-grid" aria-live="polite"></div>
+      <p id="emptyMessage" class="empty" hidden>Ничего не найдено. Попробуй другой запрос.</p>
+    </section>
+    <section class="about shell" id="about"><div class="about-icon">⚡</div><div><div class="eyebrow">BUILT FROM IMAGINATION</div><h2>СНАЧАЛА ИДЕЯ.<br /><span>ПОТОМ — ЦЕЛАЯ ВСЕЛЕННАЯ.</span></h2><p>SOKOL GAMES — коллекция авторских мини-игр. Новые проекты, механики и приключения будут появляться здесь по мере разработки.</p></div></section>
+  </main>
+  <footer class="shell footer"><span>© <span id="year"></span> SOKOL GAMES</span><span>MADE TO PLAY. BUILT TO CREATE.</span><a href="#home">Наверх ↑</a></footer>
+  <dialog id="gameDialog" class="game-dialog" aria-label="Окно игры"><div class="dialog-head"><div><div class="eyebrow">NOW PLAYING</div><h2 id="dialogTitle">Игра</h2></div><div class="dialog-controls"><button id="fullscreenBtn" class="tiny-btn" title="Полный экран">⛶ Полный экран</button><button id="closeDialog" class="tiny-btn" aria-label="Закрыть">✕</button></div></div><div class="frame-wrap"><iframe id="gameFrame" title="Мини-игра" allow="fullscreen" allowfullscreen></iframe></div><p id="dialogHint" class="dialog-hint"></p></dialog>
+  <script src="games.js"></script><script src="app.js"></script>
+</body>
+</html>
