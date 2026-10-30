@@ -3,6 +3,7 @@
   status: "ready" (готово) или "soon" (скоро)
   url: относительный путь до HTML-файла игры; только локальные пути.
   icon: эмодзи; colors: два цвета градиента.
+  devices: список поддерживаемых устройств — computer, phone, tablet.
 */
 const GAMES = [
   {
@@ -14,6 +15,7 @@ const GAMES = [
     url: "games/demo/index.html",
     icon: "◈",
     colors: ["#5736d9", "#04c8e8"],
+    devices: ["computer", "phone", "tablet"],
     controls: "Мышь, касание экрана или стрелки ← →. Собирай голубые сферы, избегай розовых блоков."
   },
   {
@@ -25,6 +27,7 @@ const GAMES = [
     url: "games/space-runner/index.html",
     icon: "🚀",
     colors: ["#5c29b8", "#e94891"],
+    devices: ["computer", "phone", "tablet"],
     controls: "Веди мышь вверх / вниз или пальцем по экрану. Удерживай левую кнопку мыши / FIRE для стрельбы. R — рестарт."
   },
   {
@@ -36,6 +39,7 @@ const GAMES = [
     url: "games/apple-catcher/index.html",
     icon: "🍎",
     colors: ["#0f8168", "#bfe557"],
+    devices: ["computer", "phone", "tablet"],
     controls: "Стрелки ← →; на телефоне — кнопки или касание поля. Лови яблоки и Lucky Block, избегай динамита. Пробел — новая игра."
   },
   {
@@ -47,6 +51,7 @@ const GAMES = [
     url: "games/pong-arena/index.html",
     icon: "🏓",
     colors: ["#164b9b", "#53a5fb"],
+    devices: ["computer", "phone", "tablet"],
     controls: "Красный игрок: W / S · Синий игрок: ↑ / ↓ · 5 минут, побеждает набравший больше очков · R — перезапуск"
   },
   {
@@ -58,6 +63,7 @@ const GAMES = [
     url: "",
     icon: "?",
     colors: ["#45405d", "#8a6cce"],
+    devices: ["computer", "phone", "tablet"],
     controls: ""
   }
 ];
