@@ -1,0 +1,16 @@
+SOKOL GAMES — полное обновление 09.11.2026
+
+1. Распакуй этот ZIP на компьютер.
+2. Открой папку sokol-games внутри архива.
+3. В GitHub зайди в dimakosmx/sokol-games → Code → Add file → Upload files.
+4. Перетащи СОДЕРЖИМОЕ папки sokol-games: index.html, styles.css, app.js, games.js, locale.js, records.js, supabase-config.js и папку games со всеми играми.
+   ВАЖНО: index.html должен оказаться прямо в корне репозитория, не внутри новой папки sokol-games.
+5. Подтверди замену существующих файлов и нажми Commit changes в ветку main.
+6. Проверь GitHub → Actions (публикация Pages должна завершиться успешно).
+7. Открой https://dimakosmx.github.io/sokol-games/ и нажми Ctrl+F5.
+8. Чтобы проверить рейтинг, открой игру, прокрути вниз и посмотри статус: Online / Connecting / Connection error.
+9. Если нет связи, в Supabase → SQL Editor ранее успешно выполнили supabase_setup.sql. Не запускай другой CREATE TABLE без IF NOT EXISTS.
+
+Почему «main» может показывать старую дату: main — имя ветки, а у каждого файла своя дата последнего изменения. Просто загрузить новые файлы недостаточно, если старые версии не заменены.
+
+Публичный sb_publishable_ ключ находится в supabase-config.js и может быть в веб-коде. Никогда не добавляй сюда ключ sb_secret_, service_role или пароль БД.

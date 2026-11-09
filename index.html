@@ -6,7 +6,15 @@
   <meta name="theme-color" content="#090b1b" />
   <meta name="description" content="SOKOL GAMES — портал авторских мини-игр." />
   <title>SOKOL GAMES — Play beyond limits</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261109-2" />
+  <style id="sokol-language-fallback">
+    .language-bar{display:flex;justify-content:flex-end;gap:8px;padding-top:14px;position:relative;z-index:5;flex-wrap:wrap}
+    .language-bar button{appearance:none;-webkit-appearance:none;font-family:inherit;font-weight:800;font-size:12px;letter-spacing:.25px;line-height:1.3;min-height:40px;padding:10px 17px;background:linear-gradient(140deg,#171f3a,#10162a);border:1px solid #405783;border-radius:11px;color:#c5d4f1;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}
+    .language-bar button:hover{border-color:#68eafa;color:#fff;transform:translateY(-1px)}
+    .language-bar button.active,.language-bar button[aria-pressed="true"]{background:linear-gradient(105deg,#4ae6f0,#937aff);border-color:#77dcff;color:#07142b;box-shadow:0 5px 25px #46c8fa44}
+    .language-bar button:focus-visible{outline:2px solid #d6fbff;outline-offset:3px}
+    @media(max-width:600px){.language-bar{justify-content:center;gap:6px}.language-bar button{flex:1 1 auto;max-width:135px;padding:10px 8px;font-size:11px}}
+  </style>
 </head>
 <body>
   <div class="glow glow-one"></div><div class="glow glow-two"></div>
@@ -45,8 +53,8 @@
   </main>
   <footer class="shell footer"><span>© <span id="year"></span> SOKOL GAMES</span><span data-i18n="footerTagline">MADE TO PLAY. BUILT TO CREATE.</span><a href="#home" data-i18n="backTop">Наверх ↑</a></footer>
   <dialog id="gameDialog" class="game-dialog" aria-label="Окно игры"><div class="dialog-head"><div><div class="eyebrow"><span data-i18n="nowPlaying">NOW PLAYING</span></div><h2 id="dialogTitle">Игра</h2></div><div class="dialog-controls"><button id="fullscreenBtn" class="tiny-btn" title="Полный экран" data-i18n-title="fullscreen"><span data-i18n="fullscreen">⛶ Полный экран</span></button><button id="closeDialog" class="tiny-btn" aria-label="Закрыть">✕</button></div></div><div class="frame-wrap"><iframe id="gameFrame" title="Мини-игра" allow="fullscreen" allowfullscreen></iframe></div><p id="dialogDevices" class="dialog-devices"></p><div class="game-description"><strong data-i18n="gameDescription">ОБ ИГРЕ</strong><p id="dialogHint" class="dialog-hint"></p></div>
-<section class="leaderboard" aria-labelledby="recordTitle"><div class="leaderboard-top"><div><div class="eyebrow" data-i18n="leaderboardLocal">Локальный рейтинг</div><h3 id="recordTitle" data-i18n="recordsTitle">ТОП-5 ИГРОКОВ</h3><p data-i18n="recordsSubtitle">Лучшие результаты этой игры</p></div><div class="personal-record"><span data-i18n="personalBest">ТВОЙ МАКСИМУМ</span><strong id="personalBest">0</strong></div></div><div class="score-table-wrap"><table class="score-table" aria-label="Рекорды" data-i18n-aria="recordBoardLabel"><thead><tr><th>#</th><th data-i18n="recordName">ИГРОК</th><th data-i18n="recordScore">ОЧКИ</th></tr></thead><tbody id="leaderboardRows"></tbody></table></div><p class="records-note" data-i18n="recordNotice">Рекорды сохраняются в этом браузере.</p></section>
+<section class="leaderboard" aria-labelledby="recordTitle"><div class="leaderboard-top"><div><div class="eyebrow" id="leaderboardMode" data-i18n="leaderboardLoading">Подключаем онлайн-рейтинг…</div><h3 id="recordTitle" data-i18n="recordsTitle">ТОП-5 ИГРОКОВ</h3><p data-i18n="recordsSubtitle">Лучшие результаты этой игры</p></div><div class="personal-record"><span data-i18n="personalBest">ТВОЙ МАКСИМУМ</span><strong id="personalBest">0</strong></div></div><div class="score-table-wrap"><table class="score-table" aria-label="Рекорды" data-i18n-aria="recordBoardLabel"><thead><tr><th>#</th><th data-i18n="recordName">ИГРОК</th><th data-i18n="recordScore">ОЧКИ</th></tr></thead><tbody id="leaderboardRows"></tbody></table></div><p class="records-note" data-i18n="recordLoading">Загружаем результаты…</p><button class="record-refresh" id="recordRefresh" type="button" aria-label="Refresh leaderboard">↻ <span data-i18n="leaderboardRefresh">Обновить рейтинг</span></button></section>
 <div id="recordPopup" class="record-popup" hidden role="dialog" aria-modal="true" aria-labelledby="recordPopupTitle"><form id="recordForm" class="record-box" autocomplete="off"><div class="record-crown">🏆</div><h3 id="recordPopupTitle" data-i18n="newRecordTitle">НОВЫЙ РЕКОРД!</h3><p id="recordPrompt" data-i18n="recordPrompt">Введи своё имя для рекорда.</p><strong id="recordPoints"></strong><label class="sr-only" for="recordNameInput" data-i18n="recordPlaceholder">Твоё имя</label><input id="recordNameInput" maxlength="20" autocomplete="nickname" required data-i18n-placeholder="recordPlaceholder" placeholder="Твоё имя"/><small id="recordValidation" aria-live="polite"></small><button type="submit" class="record-continue" data-i18n="recordContinue">Продолжить</button><button type="button" id="recordSkip" class="record-skip" data-i18n="recordSkip">Пропустить</button></form></div></dialog>
-  <script src="locale.js"></script><script src="games.js"></script><script src="supabase-config.js"></script><script src="records.js"></script><script src="app.js"></script>
+  <script src="locale.js?v=20261109-2"></script><script src="games.js?v=20261109-2"></script><script src="supabase-config.js?v=20261109-2"></script><script src="records.js?v=20261109-2"></script><script src="app.js?v=20261109-2"></script>
 </body>
 </html>

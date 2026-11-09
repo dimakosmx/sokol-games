@@ -53,3 +53,13 @@
 .record-continue,.record-skip{min-height:49px;border:0;border-radius:9px;font-weight:900;font-size:15px;cursor:pointer}.record-continue{background:linear-gradient(100deg,#53e8f4,#aa8eff);color:#0c1325}.record-skip{background:#222c46;color:#d6e7ff;border:1px solid #47587c}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:600px){.game-dialog{width:calc(100% - 12px);padding:12px 9px}.leaderboard{padding:12px}.score-table td,.score-table th{padding:11px 8px}.record-box{padding:21px}.frame-wrap{max-height:57dvh}}
+
+/* v2026-11-09: integrated leaderboard and resilient game modal */
+.language-bar button{appearance:none!important;-webkit-appearance:none!important;border-radius:11px!important}
+.language-bar button.active,.language-bar button[aria-pressed="true"]{background:linear-gradient(105deg,#4ae6f0,#937aff)!important;color:#07142b!important;box-shadow:0 5px 25px #46c8fa44}
+.game-dialog{scrollbar-color:#335780 #0a1021;scrollbar-width:thin}
+.record-refresh{border:1px solid #385f82;background:#182a43;color:#b9e9fa;border-radius:8px;padding:10px 13px;font-size:12px;font-weight:800;min-height:41px;margin-top:12px}
+.record-refresh:hover{border-color:#4ee6ff;background:#203957}
+.records-note[data-state="error"]{color:#ffc69c}
+.records-note[data-state="online"]{color:#8be9cd}
+@media(max-width:600px){.leaderboard-top{align-items:flex-start}.personal-record{min-width:132px}.game-dialog{max-height:98dvh}}

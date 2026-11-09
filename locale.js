@@ -3,6 +3,10 @@
   'use strict';
   const dictionary = {
   "ru": {
+    "leaderboardRefresh": "Обновить рейтинг",
+    "leaderboardError": "Нет связи с онлайн-рейтингом",
+    "recordNoticeError": "Не удалось загрузить онлайн-рекорды. Показаны локальные результаты. Нажми «Обновить рейтинг».",
+
     "navGames": "Игры",
     "navDevices": "Устройства",
     "navAbout": "О проекте",
@@ -148,6 +152,10 @@
     "recordBoardLabel": "Таблица рекордов"
   },
   "es": {
+    "leaderboardRefresh": "Actualizar clasificación",
+    "leaderboardError": "Sin conexión a la clasificación en línea",
+    "recordNoticeError": "No se pudo cargar la clasificación en línea. Se muestran resultados locales. Pulsa «Actualizar clasificación».",
+
     "navGames": "Juegos",
     "navDevices": "Dispositivos",
     "navAbout": "Acerca del proyecto",
@@ -293,6 +301,10 @@
     "recordBoardLabel": "Tabla de récords"
   },
   "en": {
+    "leaderboardRefresh": "Refresh leaderboard",
+    "leaderboardError": "Online leaderboard unavailable",
+    "recordNoticeError": "Could not load online scores. Showing local results. Press “Refresh leaderboard” to retry.",
+
     "navGames": "Games",
     "navDevices": "Devices",
     "navAbout": "About",
