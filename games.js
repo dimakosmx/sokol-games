@@ -9,6 +9,7 @@ const GAMES = [
   {
     id: "neon-dodge",
     title: "NEON DODGE",
+    subtitleKey: "subNeon", genreKey: "genreArcade", controlsKey: "controlNeon",
     subtitle: "Уклоняйся от препятствий и собирай энергию",
     genre: "Аркада",
     status: "ready",
@@ -21,6 +22,7 @@ const GAMES = [
   {
     id: "space-runner",
     title: "SPACE RUNNER",
+    subtitleKey: "subSpace", genreKey: "genreSpace", controlsKey: "controlSpace",
     subtitle: "Уворачивайся от метеоритов, стреляй и собирай обломки",
     genre: "Космос",
     status: "ready",
@@ -33,6 +35,7 @@ const GAMES = [
   {
     id: "apple-catcher",
     title: "APPLE CATCHER",
+    subtitleKey: "subApple", genreKey: "genreReaction", controlsKey: "controlApple",
     subtitle: "Яблоки, динамит и Lucky Block с 8 сюрпризами",
     genre: "Реакция",
     status: "ready",
@@ -45,6 +48,7 @@ const GAMES = [
   {
     id: "pong-arena",
     title: "PONG ARENA",
+    subtitleKey: "subPong", genreKey: "genreTwo", controlsKey: "controlPong",
     subtitle: "Два игрока, звуки, очки и 5-минутный матч",
     genre: "На двоих",
     status: "ready",
@@ -57,6 +61,7 @@ const GAMES = [
   {
     id: "secret-game",
     title: "SECRET PROJECT",
+    subtitleKey: "subSecret", genreKey: "genreSecret",
     subtitle: "Новая игра уже на горизонте",
     genre: "Секрет",
     status: "soon",

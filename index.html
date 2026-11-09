@@ -10,40 +10,43 @@
 </head>
 <body>
   <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <div class="language-bar shell" role="group" aria-label="Language / Idioma / Язык"><button type="button" data-lang="ru" aria-pressed="true">Русский</button><button type="button" data-lang="es" aria-pressed="false">Español</button><button type="button" data-lang="en" aria-pressed="false">English</button></div>
   <header class="topbar shell">
     <a class="brand" href="#home" aria-label="SOKOL GAMES — главная"><span class="brand-mark">S</span><span>SOKOL <b>GAMES</b><small>PLAY BEYOND LIMITS</small></span></a>
-    <nav aria-label="Главное меню"><a href="#games">Игры</a><a href="#devices">Устройства</a><a href="#about">О проекте</a></nav>
-    <button class="tiny-btn" id="themeSound" aria-pressed="false" title="Включить звуки интерфейса">♫ <span>Звуки: выкл.</span></button>
+    <nav aria-label="Главное меню"><a href="#games" data-i18n="navGames">Игры</a><a href="#devices" data-i18n="navDevices">Устройства</a><a href="#about" data-i18n="navAbout">О проекте</a></nav>
+    <button class="tiny-btn" id="themeSound" aria-pressed="false" title="Включить звуки интерфейса">♫ <span data-i18n="soundsOff">Звуки: выкл.</span></button>
   </header>
   <main id="home">
     <section class="hero shell">
-      <div class="eyebrow"><span class="pulse"></span> INDEPENDENT GAME UNIVERSE <span class="line"></span> EST. 2026</div>
-      <h1>ТВОЯ ИГРА.<br /><span>ТВОИ ПРАВИЛА.</span></h1>
-      <p>Добро пожаловать в SOKOL GAMES — вселенную мини-игр, где каждый новый уровень начинается с одной идеи.</p>
-      <div class="hero-actions"><a href="#games" class="btn primary">Выбрать игру <span>↗</span></a><a href="#about" class="btn ghost">О проекте <span>→</span></a></div>
-      <div class="stats"><div><strong id="totalCount">0</strong><span>ИГР В КАТАЛОГЕ</span></div><div><strong id="readyCount">0</strong><span>ДОСТУПНО СЕЙЧАС</span></div><div><strong>∞</strong><span>ВОЗМОЖНОСТЕЙ</span></div></div>
+      <div class="eyebrow"><span class="pulse"></span> <span data-i18n="eyebrowHero">INDEPENDENT GAME UNIVERSE</span> <span class="line"></span> EST. 2026</div>
+      <h1><span class="hero-first" data-i18n="heroOne">ТВОЯ ИГРА.</span><br /><span data-i18n="heroTwo">ТВОИ ПРАВИЛА.</span></h1>
+      <p data-i18n="heroDesc">Добро пожаловать в SOKOL GAMES — вселенную мини-игр, где каждый новый уровень начинается с одной идеи.</p>
+      <div class="hero-actions"><a href="#games" class="btn primary"><span data-i18n="chooseGame">Выбрать игру</span> <span>↗</span></a><a href="#about" class="btn ghost"><span data-i18n="about">О проекте</span> <span>→</span></a></div>
+      <div class="stats"><div><strong id="totalCount">0</strong><span data-i18n="statsCatalog">ИГР В КАТАЛОГЕ</span></div><div><strong id="readyCount">0</strong><span data-i18n="statsReady">ДОСТУПНО СЕЙЧАС</span></div><div><strong>∞</strong><span data-i18n="statsPossible">ВОЗМОЖНОСТЕЙ</span></div></div>
       <div class="orbital" aria-hidden="true"><div class="ring ring-1"></div><div class="ring ring-2"></div><div class="planet">S</div><div class="planet-small p1"></div><div class="planet-small p2"></div></div>
     </section>
     <section class="device-section shell" id="devices">
-      <div class="eyebrow">CHOOSE YOUR WAY TO PLAY</div><h2>ИГРАЙ <span>ГДЕ УГОДНО.</span></h2>
-      <p class="device-intro">Выбери устройство — в каталоге останутся игры с подходящим управлением. Можно играть на компьютере, телефоне или планшете.</p>
+      <div class="eyebrow"><span data-i18n="deviceEyebrow">CHOOSE YOUR WAY TO PLAY</span></div><h2><span data-i18n="deviceH1">ИГРАЙ</span> <span data-i18n="deviceH2">ГДЕ УГОДНО.</span></h2>
+      <p class="device-intro" data-i18n="deviceIntro">Выбери устройство — в каталоге останутся игры с подходящим управлением. Можно играть на компьютере, телефоне или планшете.</p>
       <div class="device-grid" id="deviceChoices" aria-label="Выбор устройства">
-        <button class="device-tile active" data-device="all" aria-pressed="true"><span class="device-emoji">✦</span><strong>ВСЕ УСТРОЙСТВА</strong><small>Вся коллекция</small></button>
-        <button class="device-tile" data-device="computer" aria-pressed="false"><span class="device-emoji">⌨</span><strong>КОМПЬЮТЕРЫ</strong><small>Клавиатура и мышь</small></button>
-        <button class="device-tile" data-device="phone" aria-pressed="false"><span class="device-emoji">▯</span><strong>ТЕЛЕФОНЫ</strong><small>Экран и кнопки</small></button>
-        <button class="device-tile" data-device="tablet" aria-pressed="false"><span class="device-emoji">▣</span><strong>ПЛАНШЕТЫ</strong><small>Касания и свайпы</small></button>
+        <button class="device-tile active" data-device="all" aria-pressed="true"><span class="device-emoji">✦</span><strong data-i18n="deviceAll">ВСЕ УСТРОЙСТВА</strong><small data-i18n="deviceAllSub">Вся коллекция</small></button>
+        <button class="device-tile" data-device="computer" aria-pressed="false"><span class="device-emoji">⌨</span><strong data-i18n="deviceComputerPlural">КОМПЬЮТЕРЫ</strong><small data-i18n="deviceComputerSub">Клавиатура и мышь</small></button>
+        <button class="device-tile" data-device="phone" aria-pressed="false"><span class="device-emoji">▯</span><strong data-i18n="devicePhonePlural">ТЕЛЕФОНЫ</strong><small data-i18n="devicePhoneSub">Экран и кнопки</small></button>
+        <button class="device-tile" data-device="tablet" aria-pressed="false"><span class="device-emoji">▣</span><strong data-i18n="deviceTabletPlural">ПЛАНШЕТЫ</strong><small data-i18n="deviceTabletSub">Касания и свайпы</small></button>
       </div>
     </section>
     <section class="library shell" id="games">
-      <div class="section-title"><div><div class="eyebrow">THE ARCADE COLLECTION</div><h2>БИБЛИОТЕКА <span>ИГР</span></h2></div><span class="catalog-number" id="catalogCounter">00 / GAMES</span></div>
-      <div class="current-device" id="deviceSummary">Показаны игры для всех устройств</div><div class="toolbar"><label class="search-wrap"><span>⌕</span><input type="search" id="search" placeholder="Найти игру..." autocomplete="off" aria-label="Поиск по играм" /></label><div class="filters" id="filters"><button class="chip selected" data-filter="all">Все игры</button><button class="chip" data-filter="ready">Играть сейчас</button><button class="chip" data-filter="soon">Скоро</button><button class="chip" data-filter="favorite">★ Избранное</button></div></div>
+      <div class="section-title"><div><div class="eyebrow"><span data-i18n="arcadeEyebrow">THE ARCADE COLLECTION</span></div><h2><span data-i18n="library1">БИБЛИОТЕКА</span> <span data-i18n="library2">ИГР</span></h2></div><span class="catalog-number" id="catalogCounter">00 / GAMES</span></div>
+      <div class="current-device" id="deviceSummary">Показаны игры для всех устройств</div><div class="toolbar"><label class="search-wrap"><span>⌕</span><input type="search" id="search" placeholder="Найти игру..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" aria-label="Поиск по играм" /></label><div class="filters" id="filters"><button class="chip selected" data-filter="all" data-i18n="allGames">Все игры</button><button class="chip" data-filter="ready" data-i18n="playNow">Играть сейчас</button><button class="chip" data-filter="soon" data-i18n="soon">Скоро</button><button class="chip" data-filter="favorite" data-i18n="favorites">★ Избранное</button></div></div>
       <div id="gameGrid" class="game-grid" aria-live="polite"></div>
-      <p id="emptyMessage" class="empty" hidden>Ничего не найдено. Попробуй другой запрос.</p>
+      <p id="emptyMessage" class="empty" hidden data-i18n="empty">Ничего не найдено. Попробуй другой запрос.</p>
     </section>
-    <section class="about shell" id="about"><div class="about-icon">⚡</div><div><div class="eyebrow">BUILT FROM IMAGINATION</div><h2>СНАЧАЛА ИДЕЯ.<br /><span>ПОТОМ — ЦЕЛАЯ ВСЕЛЕННАЯ.</span></h2><p>SOKOL GAMES — коллекция авторских мини-игр. Новые проекты, механики и приключения будут появляться здесь по мере разработки.</p></div></section>
+    <section class="about shell" id="about"><div class="about-icon">⚡</div><div><div class="eyebrow"><span data-i18n="aboutEyebrow">BUILT FROM IMAGINATION</span></div><h2><span data-i18n="aboutH1">СНАЧАЛА ИДЕЯ.</span><br /><span data-i18n="aboutH2">ПОТОМ — ЦЕЛАЯ ВСЕЛЕННАЯ.</span></h2><p data-i18n="aboutDesc">SOKOL GAMES — коллекция авторских мини-игр. Новые проекты, механики и приключения будут появляться здесь по мере разработки.</p></div></section>
   </main>
-  <footer class="shell footer"><span>© <span id="year"></span> SOKOL GAMES</span><span>MADE TO PLAY. BUILT TO CREATE.</span><a href="#home">Наверх ↑</a></footer>
-  <dialog id="gameDialog" class="game-dialog" aria-label="Окно игры"><div class="dialog-head"><div><div class="eyebrow">NOW PLAYING</div><h2 id="dialogTitle">Игра</h2></div><div class="dialog-controls"><button id="fullscreenBtn" class="tiny-btn" title="Полный экран">⛶ Полный экран</button><button id="closeDialog" class="tiny-btn" aria-label="Закрыть">✕</button></div></div><div class="frame-wrap"><iframe id="gameFrame" title="Мини-игра" allow="fullscreen" allowfullscreen></iframe></div><p id="dialogDevices" class="dialog-devices"></p><p id="dialogHint" class="dialog-hint"></p></dialog>
-  <script src="games.js"></script><script src="app.js"></script>
+  <footer class="shell footer"><span>© <span id="year"></span> SOKOL GAMES</span><span data-i18n="footerTagline">MADE TO PLAY. BUILT TO CREATE.</span><a href="#home" data-i18n="backTop">Наверх ↑</a></footer>
+  <dialog id="gameDialog" class="game-dialog" aria-label="Окно игры"><div class="dialog-head"><div><div class="eyebrow"><span data-i18n="nowPlaying">NOW PLAYING</span></div><h2 id="dialogTitle">Игра</h2></div><div class="dialog-controls"><button id="fullscreenBtn" class="tiny-btn" title="Полный экран" data-i18n-title="fullscreen"><span data-i18n="fullscreen">⛶ Полный экран</span></button><button id="closeDialog" class="tiny-btn" aria-label="Закрыть">✕</button></div></div><div class="frame-wrap"><iframe id="gameFrame" title="Мини-игра" allow="fullscreen" allowfullscreen></iframe></div><p id="dialogDevices" class="dialog-devices"></p><div class="game-description"><strong data-i18n="gameDescription">ОБ ИГРЕ</strong><p id="dialogHint" class="dialog-hint"></p></div>
+<section class="leaderboard" aria-labelledby="recordTitle"><div class="leaderboard-top"><div><div class="eyebrow" data-i18n="leaderboardLocal">Локальный рейтинг</div><h3 id="recordTitle" data-i18n="recordsTitle">ТОП-5 ИГРОКОВ</h3><p data-i18n="recordsSubtitle">Лучшие результаты этой игры</p></div><div class="personal-record"><span data-i18n="personalBest">ТВОЙ МАКСИМУМ</span><strong id="personalBest">0</strong></div></div><div class="score-table-wrap"><table class="score-table" aria-label="Рекорды" data-i18n-aria="recordBoardLabel"><thead><tr><th>#</th><th data-i18n="recordName">ИГРОК</th><th data-i18n="recordScore">ОЧКИ</th></tr></thead><tbody id="leaderboardRows"></tbody></table></div><p class="records-note" data-i18n="recordNotice">Рекорды сохраняются в этом браузере.</p></section>
+<div id="recordPopup" class="record-popup" hidden role="dialog" aria-modal="true" aria-labelledby="recordPopupTitle"><form id="recordForm" class="record-box" autocomplete="off"><div class="record-crown">🏆</div><h3 id="recordPopupTitle" data-i18n="newRecordTitle">НОВЫЙ РЕКОРД!</h3><p id="recordPrompt" data-i18n="recordPrompt">Введи своё имя для рекорда.</p><strong id="recordPoints"></strong><label class="sr-only" for="recordNameInput" data-i18n="recordPlaceholder">Твоё имя</label><input id="recordNameInput" maxlength="20" autocomplete="nickname" required data-i18n-placeholder="recordPlaceholder" placeholder="Твоё имя"/><small id="recordValidation" aria-live="polite"></small><button type="submit" class="record-continue" data-i18n="recordContinue">Продолжить</button><button type="button" id="recordSkip" class="record-skip" data-i18n="recordSkip">Пропустить</button></form></div></dialog>
+  <script src="locale.js"></script><script src="games.js"></script><script src="supabase-config.js"></script><script src="records.js"></script><script src="app.js"></script>
 </body>
 </html>

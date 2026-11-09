@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const t=(key,values)=>window.SOKOL_I18N.t(key,values);
   const grid = document.querySelector('#gameGrid');
   const search = document.querySelector('#search');
   const filters = document.querySelector('#filters');
@@ -9,7 +10,8 @@
   const favorites = new Set(safeGetFavorites().filter(x => typeof x === 'string'));
   let currentFilter = 'all';
   let currentDevice = 'all';
-  const deviceNames = { computer: 'Компьютер', phone: 'Телефон', tablet: 'Планшет' };
+  const deviceNames = { computer: 'computer', phone: 'phone', tablet: 'tablet' };
+  const dn = id => t(deviceNames[id] || id);
   const deviceIcons = { computer: '⌨', phone: '▯', tablet: '▣' };
   const deviceChoices = document.querySelector('#deviceChoices');
   let sounds = false;
@@ -17,7 +19,7 @@
   document.querySelector('#year').textContent = new Date().getFullYear();
   document.querySelector('#totalCount').textContent = GAMES.length;
   document.querySelector('#readyCount').textContent = GAMES.filter(g => g.status === 'ready').length;
-  document.querySelector('#catalogCounter').textContent = String(GAMES.length).padStart(2, '0') + ' / GAMES';
+  document.querySelector('#catalogCounter').textContent = String(GAMES.length).padStart(2, '0') + ' / ' + t('catalogUnit');
   const escapeHTML = s => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   function beep() {
     if (!sounds) return;
@@ -30,14 +32,14 @@
     } catch { /* unsupported audio */ }
   }
   function deviceBadges(g) {
-    return (g.devices || []).map(id => `<span class="device-badge" title="${escapeHTML(deviceNames[id] || id)}">${deviceIcons[id] || '•'} ${escapeHTML(deviceNames[id] || id)}</span>`).join('');
+    return (g.devices || []).map(id => `<span class="device-badge" title="${escapeHTML(dn(id))}">${deviceIcons[id] || '•'} ${escapeHTML(dn(id))}</span>`).join('');
   }
   function card(g, i) {
     const ready = g.status === 'ready';
     const el = document.createElement('article');
     el.className = 'game-card';
     el.style.setProperty('--from',g.colors[0]); el.style.setProperty('--to',g.colors[1]);
-    el.innerHTML = `<div class="card-art"><span class="art-grid"></span><span class="art-icon">${escapeHTML(g.icon)}</span><span class="card-index">${String(i+1).padStart(2,'0')}</span><span class="status ${ready?'live':''}">${ready?'● PLAYABLE':'COMING SOON'}</span></div><div class="card-content"><div class="card-top"><span class="genre">${escapeHTML(g.genre)}</span><button class="favorite ${favorites.has(g.id)?'active':''}" data-favorite="${escapeHTML(g.id)}" aria-label="${favorites.has(g.id)?'Убрать из избранного':'В избранное'}" aria-pressed="${favorites.has(g.id)}">★</button></div><h3>${escapeHTML(g.title)}</h3><p>${escapeHTML(g.subtitle)}</p><div class="card-devices" aria-label="Поддерживаемые устройства">${deviceBadges(g)}</div><button class="card-play" data-play="${escapeHTML(g.id)}" ${!ready?'disabled':''}>${ready?'ИГРАТЬ СЕЙЧАС ↗':'СКОРО В ИГРЕ ✧'}</button></div>`;
+    el.innerHTML = `<div class="card-art"><span class="art-grid"></span><span class="art-icon">${escapeHTML(g.icon)}</span><span class="card-index">${String(i+1).padStart(2,'0')}</span><span class="status ${ready?'live':''}">${t(ready?'playable':'comingStatus')}</span></div><div class="card-content"><div class="card-top"><span class="genre">${escapeHTML(t(g.genreKey || g.genre))}</span><button class="favorite ${favorites.has(g.id)?'active':''}" data-favorite="${escapeHTML(g.id)}" aria-label="${t(favorites.has(g.id)?'favRemove':'favAdd')}" aria-pressed="${favorites.has(g.id)}">★</button></div><h3>${escapeHTML(g.title)}</h3><p>${escapeHTML(t(g.subtitleKey || g.subtitle))}</p><div class="card-devices" aria-label="Поддерживаемые устройства">${deviceBadges(g)}</div><button class="card-play" data-play="${escapeHTML(g.id)}" ${!ready?'disabled':''}>${t(ready?'playCard':'soonCard')}</button></div>`;
     return el;
   }
   function render() {
@@ -49,11 +51,11 @@
       if (currentFilter === 'ready' && g.status !== 'ready') return;
       if (currentFilter === 'soon' && g.status !== 'soon') return;
       if (currentFilter === 'favorite' && !favorites.has(g.id)) return;
-      if (![g.title,g.subtitle,g.genre].join(' ').toLocaleLowerCase('ru').includes(query)) return;
+      if (![g.title,g.subtitle,g.genre,t(g.subtitleKey||g.subtitle),t(g.genreKey||g.genre)].join(' ').toLocaleLowerCase('ru').includes(query)) return;
       grid.append(card(g,i)); shown++;
     });
     document.querySelector('#emptyMessage').hidden = shown !== 0;
-    document.querySelector('#deviceSummary').textContent = currentDevice === 'all' ? `Все устройства · найдено игр: ${shown}` : `${deviceNames[currentDevice]} · найдено игр: ${shown}`;
+    document.querySelector('#deviceSummary').textContent = currentDevice === 'all' ? t('deviceSummaryAll',{count:shown}) : t('deviceSummaryOne',{device:dn(currentDevice),count:shown});
   }
   function validLocalPath(path) {
     if (!path || /^(?:[a-z]+:|\/\/|\/)/i.test(path) || path.split('/').includes('..')) return false;
@@ -64,9 +66,11 @@
     if (!g || g.status !== 'ready' || !validLocalPath(g.url)) return;
     beep();
     document.querySelector('#dialogTitle').textContent = g.title;
-    document.querySelector('#dialogHint').textContent = g.controls || 'Удачной игры!';
-    document.querySelector('#dialogDevices').textContent = 'ДОСТУПНО НА: ' + (g.devices || []).map(id => deviceNames[id] || id).join(' · ');
-    frame.src = g.url;
+    document.querySelector('#dialogHint').textContent = g.controlsKey ? t(g.controlsKey) : (g.controls || t('gameControlsFallback'));
+    document.querySelector('#dialogDevices').textContent = t('availableOn') + (g.devices || []).map(id => dn(id)).join(' · ');
+    dialog.dataset.game = g.id;
+    window.SOKOL_RECORDS.open(g.id);
+    frame.src = g.url + '?lang=' + encodeURIComponent(window.SOKOL_I18N.lang);
     if (typeof dialog.showModal === 'function') dialog.showModal();
   }
   grid.addEventListener('click', e => {
@@ -98,14 +102,21 @@
     beep(); render();
     document.querySelector('#games').scrollIntoView({behavior:'smooth'});
   });
-  function close() { frame.src = 'about:blank'; if (dialog.open) dialog.close(); }
+  function close() { window.SOKOL_RECORDS.close(); dialog.dataset.game = ''; frame.src = 'about:blank'; if (dialog.open) dialog.close(); }
   document.querySelector('#closeDialog').addEventListener('click',close);
-  dialog.addEventListener('close',()=>{frame.src='about:blank';});
+  dialog.addEventListener('close',()=>{window.SOKOL_RECORDS.close();frame.src='about:blank';});
   dialog.addEventListener('click',e=>{if(e.target===dialog)close();});
   document.querySelector('#fullscreenBtn').addEventListener('click',()=>{try { frame.requestFullscreen?.(); } catch {}});
   document.querySelector('#themeSound').addEventListener('click',e=>{
     sounds = !sounds; const btn = e.currentTarget;
-    btn.setAttribute('aria-pressed',String(sounds)); btn.querySelector('span').textContent = `Звуки: ${sounds?'вкл.':'выкл.'}`; beep();
+    btn.setAttribute('aria-pressed',String(sounds)); btn.querySelector('span').textContent = t(sounds?'soundsOn':'soundsOff'); beep();
+  });
+  document.addEventListener('sokol-language-change',()=>{
+    document.querySelector('#catalogCounter').textContent = String(GAMES.length).padStart(2,'0') + ' / ' + t('catalogUnit');
+    document.querySelector('#themeSound span').textContent=t(sounds?'soundsOn':'soundsOff');
+    const current=GAMES.find(x=>x.id===dialog.dataset.game);
+    if(current && dialog.open){document.querySelector('#dialogHint').textContent=current.controlsKey?t(current.controlsKey):current.controls;document.querySelector('#dialogDevices').textContent=t('availableOn')+(current.devices||[]).map(dn).join(' · ');; frame.contentWindow?.postMessage({type:'sokol-language',lang:window.SOKOL_I18N.lang},'*');}
+    render();
   });
   render();
 })();
